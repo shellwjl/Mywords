@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Flasky - {{ user.username }}{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <img class="img-rounded profile-thumbnail" src="{{ avatar }}">
+    <div class="profile-header">
+    <h1>{{ user.username }}</h1>
+    {% if user.name or user.location %}
+    <p>
+        {% if user.name %}{{ user.name }}{% endif %}
+        {% if user.location %}
+            From <a href="http://ditu.amap.com/search?query={{ user.location }}">{{ user.location }}</a>
+        {% endif %}
+        {% if user.wordrange %}<p>单词本：{{ user.wordrange }}</p>{% endif %}
+    </p>
+    {% endif %}
+
+    {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+    </div>
+</div>
+{% endblock %}
